@@ -5,7 +5,7 @@ def rps_game():
     default = []
     rating = 0
     name = input("Enter your name: ")
-    print("Hello, " + name)
+    print("Hello, " + name + "! Click enter one more time if you're ready:)")
 
     def power(opt, us, co):
         k = ' '.join(opt.copy()).split(us)
@@ -19,7 +19,7 @@ def rps_game():
             us > co
             print(f'Well done. The computer chose {co} and failed')
 
-    current_scores = open('rating.txt', 'r')
+    current_scores = open('rating.txt', 'w+')
     for i in current_scores.readlines():
         if name in i:
             rating = int(i.strip().split()[1])
@@ -29,13 +29,13 @@ def rps_game():
     else:
         for i in options.split(','):
             default.append(i)
-    print("Okay, let's start")
+    print("Okay, let's start: rock, paper or scissors?\n(Type !rating for results or !exit to exit)")
     
     while True:
         user = input('')
         comp = random.choice(default)
         if user == '!exit':
-            print('Bye!')
+            print('Bye-bye!')
             break
         elif user == '!rating':
             print('Your rating: ', rating)
